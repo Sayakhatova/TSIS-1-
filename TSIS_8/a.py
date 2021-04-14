@@ -66,7 +66,7 @@ class Coin(pygame.sprite.Sprite):
         super().__init__()
         self.image=pygame.image.load("coin.png")
         self.surf=pygame.Surface((30, 60))
-        self.rect=self.surf.get_rect(center=(random.randint(40, SCREEN_WIDTH-40), 0))
+        self.rect=self.surf.get_rect(center=(random.randrange(40, SCREEN_WIDTH-40), 0))
 
     def move(self):
         global score
