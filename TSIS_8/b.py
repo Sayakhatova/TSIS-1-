@@ -71,7 +71,7 @@ class Coin(pygame.sprite.Sprite):
 
     def move(self):
         global score
-        self.rect.move_ip(0, speed)
+        self.rect.move_ip(0, speed1)
         if (self.rect.bottom>600):
             self.rect.top=0
             self.rect.center=(random.randint(40, SCREEN_WIDTH-40), 0)
