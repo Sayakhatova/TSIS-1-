@@ -70,7 +70,7 @@ class SNAKE:
 
     def __init__(self):
 
-        self.body=[Vector2(5, 10), Vector2(4, 10), Vector2(3, 10)]
+        self.body=[Vector2(5, 10), Vector2(4, 10)]
         self.direction=Vector2(1, 0)
         self.new_block=False
 
@@ -165,27 +165,27 @@ def game():
                 pygame.quit()
                 sys.exit()
 
-        if event.type==SCREEN_UPDATE:
-            main_game.update()
+            if event.type==SCREEN_UPDATE:
+                main_game.update()
 
-        if event.type==pygame.KEYDOWN:
+            if event.type==pygame.KEYDOWN:
 
-            if event.key==pygame.K_UP:
-                main_game.snake.direction=Vector2(0, -1)
-            elif event.key==pygame.K_DOWN:
-                main_game.snake.direction=Vector2(0, 1)
-            elif event.key==pygame.K_LEFT:
-                main_game.snake.direction=Vector2(-1, 0)
-            elif event.key==pygame.K_RIGHT:
-                main_game.snake.direction=Vector2(1, 0)
+                if event.key==pygame.K_UP:
+                   main_game.snake.direction=Vector2(0, -1)
+                elif event.key==pygame.K_DOWN:
+                   main_game.snake.direction=Vector2(0, 1)
+                elif event.key==pygame.K_LEFT:
+                   main_game.snake.direction=Vector2(-1, 0)
+                elif event.key==pygame.K_RIGHT:
+                   main_game.snake.direction=Vector2(1, 0)
     
-    screen.blit(backround, (0, 0))
+        screen.blit(backround, (0, 0))
 
-    main_game.draw_elements()
+        main_game.draw_elements()
 
-    pygame.display.update()
+        pygame.display.update()
 
-    clock.tick(60)
+        clock.tick(60)
 
 start_page=pygame.image.load('start1.png')
 screen.blit(start_page, (0, 0))
@@ -193,7 +193,7 @@ pygame.display.flip()
 time.sleep(3)
 
 for event in pygame.event.get():
-
+    
     if event.type==pygame.KEYDOWN:
         if event.key==pygame.K_SPACE:
             game()
