@@ -148,19 +148,22 @@ apple=pygame.image.load('apple.png')
 backround=pygame.image.load('grass.png')
 
 def game():
+
+    global score 
+    score=0
+
+    SCREEN_UPDATE=pygame.USEREVENT
+    pygame.time.set_timer(SCREEN_UPDATE, 150)
+
+    main_game=MAIN()
   
-  SCREEN_UPDATE=pygame.USEREVENT
-  pygame.time.set_timer(SCREEN_UPDATE, 150)
-
-  main_game=MAIN()
-  
-  while True:
-
-    for event in pygame.event.get():
-
-        if event.type==pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+    while True:
+        
+        for event in pygame.event.get():
+            
+            if event.type==pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
         if event.type==SCREEN_UPDATE:
             main_game.update()
@@ -175,7 +178,7 @@ def game():
                 main_game.snake.direction=Vector2(-1, 0)
             elif event.key==pygame.K_RIGHT:
                 main_game.snake.direction=Vector2(1, 0)
-
+    
     screen.blit(backround, (0, 0))
 
     main_game.draw_elements()
@@ -185,11 +188,8 @@ def game():
     clock.tick(60)
 
 start_page=pygame.image.load('start1.png')
-
 screen.blit(start_page, (0, 0))
-
 pygame.display.flip()
-
 time.sleep(3)
 
 for event in pygame.event.get():
