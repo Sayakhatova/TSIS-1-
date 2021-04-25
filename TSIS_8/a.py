@@ -39,11 +39,13 @@ class Enemy(pygame.sprite.Sprite):
 
     def move(self):
         global score
+        global speed
         self.rect.move_ip(0, speed)
         if (self.rect.bottom>600):
             score+=1
             self.rect.top=0
             self.rect.center=(random.randint(40, SCREEN_WIDTH-40), 0)
+            speed=random.randrange(1, 6)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -110,10 +112,12 @@ while True:
                 pygame.quit()
 
     screen.blit(backround, (0, 0))
+    speed2=font1.render('Speed:'+str(speed), True, black)
     scores=font1.render('Score:'+str(score), True, black)
     coin1=font1.render('Coins:'+str(int(coins)//24), True, black)
     screen.blit(scores, (10, 10))
     screen.blit(coin1, (300, 10))
+    screen.blit(speed2, (10, 30))
 
     for entity in all:
         screen.blit(entity.image, entity.rect)
